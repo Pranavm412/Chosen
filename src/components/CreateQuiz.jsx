@@ -191,7 +191,6 @@ const CreateQuiz = () => {
             </div>
             <div className='flex justify-center items-center gap-6 mt-4'>
                 <button type='submit' className='bg-[#401B88] w-[130px] text-white rounded-md shadow-black shadow-sm hover:shadow-md py-2 hover:cursor-pointer'>{editQuestion?"Update":"Add"}</button>
-                {/* <button type='submit' className='bg-[#401B88] w-[130px] text-white rounded-md shadow-black shadow-sm hover:shadow-md py-2 hover:cursor-pointer'>Finish</button> */}
             </div>
             </form>
         </div>}

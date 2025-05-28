@@ -7,14 +7,12 @@ import CreateQuiz from './components/CreateQuiz'
 
 function App() {
 
-  const options=["Bangalore","Paris","Dallas","Beijing"];
-
   return (
     <>
     <Routes>
       <Route path='/' element={<Home/>} />
       <Route path='/quiz' element={<CreateQuiz/>} />
-      <Route path='/play' element={<Quiz options={options} />} />
+      <Route path='/play' element={<Quiz/>} />
     </Routes>
     </>
   )

@@ -34,7 +34,7 @@ const Home = () => {
                             <div className="text-3xl font-bold">{quiz.name}</div>
                             <div className="text-gray-600">{quiz.questions.length} questions</div>
                             <div className='flex'>
-                                <div className='px-4 py-2 mt-3 mr-2 bg-yellow-400 hover:bg-yellow-300 hover:shadow-md rounded-lg shadow-black shadow-sm font-semibold'><button className='hover:cursor-pointer'>Play</button></div>
+                                <div className='px-4 py-2 mt-3 mr-2 bg-yellow-400 hover:bg-yellow-300 hover:shadow-md rounded-lg shadow-black shadow-sm font-semibold'><button className='hover:cursor-pointer' onClick={()=>navigate('/play', {state:{quiz:quiz}})}>Play</button></div>
                                 <div className='px-4 py-2 mt-3 mr-2 bg-yellow-400 hover:bg-yellow-300 hover:shadow-md rounded-lg shadow-black shadow-sm font-semibold'><button className='hover:cursor-pointer' onClick={() => navigate('/quiz', {state: {quizName: quiz.name, allQuestions: quiz.questions, quizIndex: idx, isEdit: true}})}>Edit</button></div>
                             </div>
                         </div>

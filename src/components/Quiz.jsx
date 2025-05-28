@@ -1,8 +1,8 @@
 import React, { useState,useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import QuizChoice from './Quiz/QuizChoice'
 
-const questions = [
+const sampleQuestions = [
       {
         question: "What is the capital of France?",
         options: ["Madrid", "Paris", "Berlin", "Rome"],
@@ -32,6 +32,13 @@ const questions = [
 
 const Quiz = () => {
   const navigate=useNavigate();
+  const location=useLocation();
+  const quizFromRoute = location.state?.quiz || [];
+  console.log("quiz=",quizFromRoute)
+  const quizName=quizFromRoute.name||"Demo Quiz";
+  console.log("name=",quizName)
+  const questions=quizFromRoute.questions||sampleQuestions;
+  console.log("questions=",questions)
     const [currentIndex, setCurrentIndex] = useState(0);
     const [phase, setPhase] = useState('quiz');
     useEffect(()=>{
@@ -65,11 +72,11 @@ const Quiz = () => {
   }
   return (
     <div className='h-screen'>
-      {phase === 'answers-intro' ? (<div className='h-full flex justify-center items-center font-bold text-5xl text-white'>Answers</div>) : (<>
-      <div className='h-[8%] font-bold text-3xl text-white flex justify-end items-center pr-15'></div>
+      {phase === 'answers-intro' ? (<div className='h-full flex flex-col justify-center items-center font-bold text-9xl text-white'><div>Answers</div><div className='m-5 text-2xl'>Press spacebar or right arrow to continue</div></div>) : (<>
+      <div className='h-[8%] font-bold text-3xl text-white flex justify-center items-center'>{quizName}</div>
       <div className='bg-[#200867] h-[27%] font-bold text-5xl text-white flex justify-center items-center'>
         <div className='w-[10%] flex justify-end items-center pr-2'>Q{currentIndex+1}.</div>
-        <div className='w-[85%] flex justify-center items-center pl-5'>{questions[currentIndex]?.question}</div>
+        <div className='w-[85%] flex justify-start items-center pl-5'>{questions[currentIndex]?.question}</div>
         <div className='w-[5%] flex justify-center items-center'></div>
       </div>
       {phase !== 'answers-intro' && (
